@@ -1,17 +1,24 @@
+import {
+  GET_POSTS,
+  CREATE_POST,
+  UPDATE_POST,
+  DELETE_POST,
+  LIKE_POST,
+} from '../constants/actionTypes';
 const postsReducer = (posts = [], action) => {
   switch (action.type) {
-    case 'GET_POSTS':
+    case GET_POSTS:
       return action.payload || []; // Should update state with fetched posts
-    case 'CREATE_POST':
+    case CREATE_POST:
       //console.log('Reducer payload:', action.payload);
       return [...posts, action.payload]; // Add new post to state
-    case 'UPDATE_POST':
+    case UPDATE_POST:
       return posts.map((post) =>
         post._id === action.payload._id ? action.payload : post
       ); // Add new post to state
-    case 'DELETE_POST':
+    case DELETE_POST:
       return posts.filter((post) => post._id !== action.payload); // Remove post from state
-    case 'LIKE_POST':
+    case LIKE_POST:
       return posts.map((post) =>
         post._id === action.payload._id ? action.payload : post
       );
